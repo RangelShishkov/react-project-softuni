@@ -13,7 +13,9 @@ export const Navbar = () => {
                     Campfire
                 </Typography>
                 <Stack direction='row' spacing={2}>
-                    <Button color='inherit'>My</Button>
+                    <Button color='inherit'>Create post</Button>
+                    <Button color='inherit'>Logout</Button>
+                    <Button color='inherit'>All posts</Button>
                     <Button color='inherit'>About</Button>
                     <Button color='inherit'>Login</Button>
                 </Stack>
