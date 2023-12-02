@@ -1,12 +1,14 @@
 .container {
-  height: 100vh;
+  height: 75vh;
 }
 
 .grid {
-  height: 100%; /* Ensure the grid takes up the full height of the container */
+  height: 100%;
+  text-align: center; 
 }
 
 .form {
   width: 100%;
   max-width: 400px;
+  margin: auto;
 }
