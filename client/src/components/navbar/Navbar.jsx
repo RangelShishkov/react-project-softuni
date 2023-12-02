@@ -1,18 +1,23 @@
 import { AppBar, Toolbar, IconButton, Typography, Stack, Button } from '@mui/material'
-import FireplaceIcon from '@mui/icons-material/Fireplace';
 import { Link } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
 import styles from './Navbar.module.css';
+import FireplaceIcon from '@mui/icons-material/Fireplace';
+
+
+
 
 export const Navbar = () => {
 
     return (
         <AppBar position='static'>
             <Toolbar>
-                <Link to='/' className={styles['custom-link']}><IconButton size='large' edge="start" color='inherit' aria-label='logo'>
+                <CssBaseline />
+                <Link to='/' className={styles['custom-link']}><IconButton size='large' disableRipple edge="start" color='inherit' aria-label='logo'>
                     <FireplaceIcon />
                 </IconButton></Link>
                 <Typography variant='h5' component='div' sx={{ flexGrow: 1 }}>
-                    <Link to='/' className={styles['custom-link']}><Button color='inherit'>Campfire</Button></Link>
+                    <Link to='/' className={styles['custom-link']}>Campfire</Link>
                 </Typography>
                 <Stack direction='row' spacing={2} >
                     <Button color='inherit'>Create post</Button>
