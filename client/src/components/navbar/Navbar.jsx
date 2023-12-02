@@ -20,12 +20,13 @@ export const Navbar = () => {
                     <Link to='/' className={styles['custom-link']}>Campfire</Link>
                 </Typography>
                 <Stack direction='row' spacing={2} >
-                    <Button color='inherit'>Create post</Button>
                     <Link to='/' className={styles['custom-link']}><Button color='inherit'>All posts</Button></Link>
+                    <Link to='/post-create' className={styles['custom-link']}><Button color='inherit'>Create post</Button></Link>
                     <Link to='/about' className={styles['custom-link']}><Button color='inherit'>About</Button></Link>
                     <Link to='/login' className={styles['custom-link']}><Button color='inherit'>Login</Button></Link>
                     <Link to='/register' className={styles['custom-link']}><Button color='inherit'>Register</Button></Link>
                     <Link to='/logout' className={styles['custom-link']}><Button color='inherit'>Logout</Button></Link>
+                    
                 </Stack>
             </Toolbar>
         </AppBar>
