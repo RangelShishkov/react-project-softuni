@@ -14,7 +14,7 @@ export default function Post({
 }) {
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 350, margin: 1, display: 'inline-block'}}>
       <CardActionArea>
         <CardMedia
           component="img"
