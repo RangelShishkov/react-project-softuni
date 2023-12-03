@@ -1,0 +1,28 @@
+{
+    "7f42057b-0256-4024-88a6-a5f1d838ecea": {
+        "title": "Ivan",
+        "category": "test",
+        "additional information": "123sss",
+        "imageUrl": "",
+        "_id": "7f42057b-0256-4024-88a6-a5f1d838ecea"
+    },
+    "70ba427f-79fa-4222-ae2e-4ce7381b80c6": {
+        "title": "How to survive in the wild",
+        "category": "Survival",
+        "additional information": "Today we will learn how to survive in the wild",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Campfire_Pinecone.png",
+        "_id": "70ba427f-79fa-4222-ae2e-4ce7381b80c6"
+    },
+    "9e0c35b1-9ac7-4364-8139-e37b7c62360d": {
+        "title": "How to survive in the wilderness",
+        "description": "1.setup safezone",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Campfire_Pinecone.png",
+        "_id": "9e0c35b1-9ac7-4364-8139-e37b7c62360d"
+    },
+    "6ae91535-aaec-40fe-8dc2-8cd1ea64eb1a": {
+        "title": "Encountering a bear",
+        "description": "If u happen to encounter a bear never climb a tree",
+        "imageUrl": "https://www.nps.gov/lacl/learn/nature/images/Image-w-cred-cap_-1200w-_-Brown-Bear-page_-brown-bear-in-fog_2.jpg",
+        "_id": "6ae91535-aaec-40fe-8dc2-8cd1ea64eb1a"
+    }
+}

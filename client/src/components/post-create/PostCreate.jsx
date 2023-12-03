@@ -1,7 +1,24 @@
 import { Container, Typography, TextField, Button, CssBaseline, Grid } from '@mui/material';
 import styles from './PostCreate.module.css';
+import { useNavigate } from 'react-router-dom';
+import * as postService from '../../services/postService';
 
 function PostCreate() {
+  const navigate = useNavigate();
+  const createPostSubmitHandler = async(e) => {
+
+    e.preventDefault();
+  const postData = Object.fromEntries(new FormData(e.currentTarget));
+
+  try{
+    await postService.create(postData);
+    navigate('/')
+  }catch (err) {
+    console.log(err)
+  }
+
+  }
+  
     return (
         <Container className={styles.container}>
           <CssBaseline />
@@ -9,7 +26,7 @@ function PostCreate() {
             <Grid item xs={12} sm={8} md={6}>
               {/* Adjust xs, sm, md values based on your design requirements */}
               <Typography variant="h5">Create Post</Typography>
-              <form className={styles.form}>
+              <form className={styles.form} onSubmit={createPostSubmitHandler}>
               <TextField
           id="title"
           name="title"
@@ -20,20 +37,11 @@ function PostCreate() {
           margin="normal"
         />
         <TextField
-          id="category"
-          name="category"
-          label="Category"
+          id="description"
+          name="description"
+          label="description"
           variant="outlined"
-          placeholder="Enter post category..."
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          id="additional-information"
-          name="additional information"
-          label="Additional Information"
-          variant="outlined"
-          placeholder="Add additional information"
+          placeholder="Add description"
           multiline
           rows={4}
           fullWidth
@@ -48,7 +56,7 @@ function PostCreate() {
           fullWidth
           margin="normal"
         />
-                <Button variant="contained" color="primary" type="submit">
+                <Button variant="contained" color="primary" type="submit" >
                   Create Post
                 </Button>
               </form>
