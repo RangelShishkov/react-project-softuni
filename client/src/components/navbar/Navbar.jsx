@@ -25,8 +25,7 @@ export const Navbar = () => {
                     <Link to='/about' className={styles['custom-link']}><Button color='inherit'>About</Button></Link>
                     <Link to='/login' className={styles['custom-link']}><Button color='inherit'>Login</Button></Link>
                     <Link to='/register' className={styles['custom-link']}><Button color='inherit'>Register</Button></Link>
-                    <Link to='/logout' className={styles['custom-link']}><Button color='inherit'>Logout</Button></Link>
-                    
+                    <Link to='/logout' className={styles['custom-link']}><Button color='inherit'>Logout</Button></Link>                  
                 </Stack>
             </Toolbar>
         </AppBar>

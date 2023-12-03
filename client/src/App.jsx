@@ -8,6 +8,7 @@ import Register from './components/register/Register'
 import PostCreate from './components/post-create/PostCreate'
 
 
+
 function App() {
 
   return (
@@ -20,7 +21,6 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/post-create' element={<PostCreate />} />
-
         </Routes>
       </main>
       <Footer />
