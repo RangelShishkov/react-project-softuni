@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import styles from './Post.module.css'
 
 export default function Post({
   _id,
@@ -24,7 +25,7 @@ export default function Post({
           <Typography gutterBottom variant="h5" component="div">
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" className={styles['truncatedText']}>
             {description}
           </Typography>
         </CardContent>

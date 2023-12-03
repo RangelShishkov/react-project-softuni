@@ -24,7 +24,6 @@ function PostCreate() {
           <CssBaseline />
           <Grid container justifyContent="center" alignItems="center" className={styles.grid}>
             <Grid item xs={12} sm={8} md={6}>
-              {/* Adjust xs, sm, md values based on your design requirements */}
               <Typography variant="h5">Create Post</Typography>
               <form className={styles.form} onSubmit={createPostSubmitHandler}>
               <TextField
