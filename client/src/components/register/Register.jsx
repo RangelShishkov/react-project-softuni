@@ -9,23 +9,28 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useContext } from "react";
 import useForm from '../hooks/useForm';
-
-
-// TODO remove, this demo shouldn't need to reset the theme.
+import AuthContext from '../contexts/authContext';
 
 const defaultTheme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+const RegisterFormKeys = {
+  FirstName: 'firstName',
+  LastName: 'lastName',
+  Email: 'email',
+  Password: 'password',
 
+};
+
+export default function SignUp() {
+  const { registerSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+    [RegisterFormKeys.FirstName]: '',
+    [RegisterFormKeys.LastName]: '',
+    [RegisterFormKeys.Email]: '',
+    [RegisterFormKeys.Password]: '',
+  });
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -43,7 +48,7 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+          <Box component="form" noValidate onSubmit={onSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -54,6 +59,9 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={onChange}
+                  values={values[RegisterFormKeys.FirstName]}
+
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -64,6 +72,9 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={onChange}
+                  values={values[RegisterFormKeys.LastName]}
+
                 />
               </Grid>
               <Grid item xs={12}>
@@ -74,6 +85,9 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={onChange}
+                  values={values[RegisterFormKeys.Email]}
+
                 />
               </Grid>
               <Grid item xs={12}>
@@ -85,6 +99,9 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={onChange}
+                  values={values[RegisterFormKeys.Password]}
+
                 />
               </Grid>
             </Grid>
@@ -105,7 +122,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-       
+
       </Container>
     </ThemeProvider>
   );

@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer'
 import Login from './components/login/login'
 import Register from './components/register/Register'
 import PostCreate from './components/post-create/PostCreate'
+import { AuthProvider } from './components/contexts/authContext'
 
 
 
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+    <AuthProvider>
       <Navbar />
       <main>
         <Routes>
@@ -24,6 +26,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      </AuthProvider>
     </>
   )
 }

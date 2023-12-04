@@ -1,9 +1,8 @@
 import { createContext } from "react";
 import { useNavigate } from 'react-router-dom';
-
-import * as authService from '../services/authService';
+import * as authService from '../../services/authService';
 import usePersistedState from "../hooks/usePersistedState";
-import Path from '../paths';
+
 
 const AuthContext = createContext();
 
@@ -20,7 +19,7 @@ export const AuthProvider = ({
 
         localStorage.setItem('accessToken', result.accessToken);
 
-        navigate(Path.Home);
+        navigate('/');
     };
 
     const registerSubmitHandler = async (values) => {
@@ -30,7 +29,7 @@ export const AuthProvider = ({
 
         localStorage.setItem('accessToken', result.accessToken);
 
-        navigate(Path.Home);
+        navigate('/');
     };
 
     const logoutHandler = () => {
