@@ -51,7 +51,7 @@ function PostCreate() {
           name="imageUrl"
           label="Image"
           variant="outlined"
-          placeholder="Upload a photo..."
+          placeholder="Upload a photo URL..."
           fullWidth
           margin="normal"
         />

@@ -16,10 +16,10 @@ const request = async (method, url, data) => {
         ...buildOptions(data),
         method,
     });
+
     console.log('Server Response:', response);
 
     const result = await response.json();
-
     return result;
 };
 
