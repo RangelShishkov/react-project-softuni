@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import styles from './Navbar.module.css';
 import FireplaceIcon from '@mui/icons-material/Fireplace';
-
+import { useContext } from 'react';
+import AuthContext from '../contexts/authContext';
 
 
 
 export const Navbar = () => {
-
+    const {
+        isAuthenticated,
+        firstName,
+    } = useContext(AuthContext);
     return (
         <AppBar position='static'>
             <Toolbar>
@@ -20,12 +24,23 @@ export const Navbar = () => {
                     <Link to='/' className={styles['custom-link']}>Campfire</Link>
                 </Typography>
                 <Stack direction='row' spacing={2} >
+
                     <Link to='/' className={styles['custom-link']}><Button color='inherit'>All posts</Button></Link>
-                    <Link to='/post-create' className={styles['custom-link']}><Button color='inherit'>Create post</Button></Link>
-                    <Link to='/my-posts' className={styles['custom-link']}><Button color='inherit'>My posts</Button></Link>
-                    <Link to='/login' className={styles['custom-link']}><Button color='inherit'>Login</Button></Link>
-                    <Link to='/register' className={styles['custom-link']}><Button color='inherit'>Register</Button></Link>
-                    <Link to='/logout' className={styles['custom-link']}><Button color='inherit'>Logout</Button></Link>                  
+
+                    {isAuthenticated && (
+                        <>
+                            <Link to='/post-create' className={styles['custom-link']}><Button color='inherit'>Create post</Button></Link>
+                            <Link to='/my-posts' className={styles['custom-link']}><Button color='inherit'>My posts</Button></Link>
+                            <Link to='/logout' className={styles['custom-link']}><Button color='inherit'>Logout</Button></Link>
+                        </>
+                    )}
+                    {!isAuthenticated && (
+                        <>
+                            <Link to='/register' className={styles['custom-link']}><Button color='inherit'>Register</Button></Link>
+                            <Link to='/login' className={styles['custom-link']}><Button color='inherit'>Login</Button></Link>
+                        </>
+
+                    )}
                 </Stack>
             </Toolbar>
         </AppBar>

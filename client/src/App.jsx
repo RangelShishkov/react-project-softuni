@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer'
 import Login from './components/login/login'
 import Register from './components/register/Register'
 import PostCreate from './components/post-create/PostCreate'
+import Logout from './components/logout/logout'
 import { AuthProvider } from './components/contexts/authContext'
 
 
@@ -23,6 +24,8 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/post-create' element={<PostCreate />} />
+          <Route path='/logout' element={<Logout />} />
+
         </Routes>
       </main>
       <Footer />

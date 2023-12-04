@@ -9,26 +9,29 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { useContext } from "react";
+import useForm from "../hooks/useForm";
+import AuthContext from "../contexts/authContext";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
+const LoginFormKyes = {
+  Email: 'email',
+  Password: 'password',
+};
 
 export default function Login() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const { loginSubmitHandler } = useContext(AuthContext);
+  const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
+    [LoginFormKyes.Email]: '',
+    [LoginFormKyes.Password]: '',
+  })
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
-        
+
         <Box
           sx={{
             marginTop: 8,
@@ -43,7 +46,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -53,6 +56,9 @@ export default function Login() {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={onChange}
+              value={values[LoginFormKyes.Email]}
+
             />
             <TextField
               margin="normal"
@@ -63,6 +69,9 @@ export default function Login() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={onChange}
+              value={values[LoginFormKyes.Password]}
+
             />
             <Button
               type="submit"
