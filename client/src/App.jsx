@@ -9,6 +9,7 @@ import PostCreate from './components/post-create/PostCreate'
 import Logout from './components/logout/logout'
 import { AuthProvider } from './contexts/authContext'
 import PostDetails from './components/post-details/PostDetails'
+import PostEdit from './components/post-edit/PostEdit'
 
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/post-create' element={<PostCreate />} />
             <Route path='/logout' element={<Logout />} />
-            <Route path='/posts/:postId' element={<PostDetails />}></Route>
+            <Route path='/posts/:postId' element={<PostDetails />} />
+            <Route path='/posts/:postId/edit' element={<PostEdit />} />
           </Routes>
         </main>
         <Footer />

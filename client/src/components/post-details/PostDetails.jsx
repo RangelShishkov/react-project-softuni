@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import * as postService from '../../services/postService';
 import { Card, CardContent, CardMedia, Typography, Button, CardActions } from '@mui/material';
 import AuthContext from "../../contexts/authContext";
+import { pathToUrl } from '../../utils/pathUtils';
 
 const PostDetails = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const PostDetails = () => {
   useEffect(() => {
     postService.getOne(postId)
       .then(setPost);
-  }, [postId])
+  }, [postId]);
 
   const deleteButtonClickHandler = async () => {
     const hasConfirmed = confirm(`Are you sure you want to delete ${post.title}`);
@@ -23,9 +24,8 @@ const PostDetails = () => {
       navigate('/');
     }
   }
-  console.log('userId:', userId);
-  console.log('post._ownerId:', post._ownerId);
-  console.log({post})
+  // console.log('userId:', userId);
+  // console.log('post._ownerId:', post._ownerId);
 
   return (
     <Card sx={{ maxWidth: 900, margin: 'auto', paddingBottom: '30px' }}>
@@ -44,7 +44,9 @@ const PostDetails = () => {
 
       {userId === post._ownerId && (
         <CardActions>
-          <Button size="small">Edit</Button>
+         <Link to={pathToUrl('/posts/:postId/edit', {postId})}>
+         <Button size="small">Edit</Button>
+         </Link> 
           <Button onClick={deleteButtonClickHandler} size="small">Delete</Button>
         </CardActions>
       )}

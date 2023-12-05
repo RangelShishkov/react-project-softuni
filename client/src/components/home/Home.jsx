@@ -12,11 +12,19 @@ function Home() {
         postService.getAll()
             .then(result => setPosts(result));
     }, []);
-
+    const filteredPosts = posts.filter(post => post.title && post.description);
     return (
-        posts.map(post => (
-            <Post key={post._id} {...post} />
+        <>
+            {filteredPosts.length > 0 ? (
+        filteredPosts.map(post => (
+          <Post key={post._id} {...post} />
         ))
+      ) : (
+        <h3>No posts yet</h3>
+      )}
+        </>
+
+
     );
 }
 
