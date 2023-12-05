@@ -16,15 +16,13 @@ function Home() {
     return (
         <>
             {filteredPosts.length > 0 ? (
-        filteredPosts.map(post => (
-          <Post key={post._id} {...post} />
-        ))
-      ) : (
-        <h3>No posts yet</h3>
-      )}
+                filteredPosts.map(post => (
+                    <Post key={post._id} {...post} />
+                ))
+            ) : (
+                <h3>No posts yet</h3>
+            )}
         </>
-
-
     );
 }
 

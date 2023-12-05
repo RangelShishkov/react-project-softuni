@@ -13,7 +13,6 @@ export default function Post({
   imageUrl,
   description
 }) {
-  console.log('Post data:', { _id, title, imageUrl, description });
   return (
     <Card sx={{ maxWidth: 350, minWidth: 350, margin: 1, display: 'inline-block'}}>
       <Link to= {`/posts/${_id}`} className={styles['custom-link']} >
