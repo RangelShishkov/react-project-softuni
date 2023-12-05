@@ -1,8 +1,13 @@
 .truncatedText {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 2; 
-    max-height: 2.8em;
-  }
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  max-height: 2.8em;
+}
+
+.custom-link {
+  text-decoration: none;
+  color: inherit;
+}

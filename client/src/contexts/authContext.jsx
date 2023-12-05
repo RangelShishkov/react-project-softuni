@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import * as authService from '../../services/authService';
+import * as authService from '../services/authService';
 import usePersistedState from "../hooks/usePersistedState";
 
 

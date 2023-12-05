@@ -10,8 +10,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useContext } from "react";
-import useForm from "../hooks/useForm";
-import AuthContext from "../contexts/authContext";
+import useForm from "../../hooks/useForm";
+import AuthContext from "../../contexts/authContext";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 

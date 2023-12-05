@@ -5,6 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import styles from './Post.module.css'
+import { Link } from 'react-router-dom';
 
 export default function Post({
   _id,
@@ -15,6 +16,7 @@ export default function Post({
 
   return (
     <Card sx={{ maxWidth: 350, minWidth: 350, margin: 1, display: 'inline-block'}}>
+      <Link to= {`/posts/${_id}`} className={styles['custom-link']} >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -30,9 +32,10 @@ export default function Post({
           </Typography>
         </CardContent>
       </CardActionArea>
+      </Link>
       <CardActions>
         <Button size="small" color="primary">
-          Favourite
+          Comments
         </Button>
       </CardActions>
     </Card>

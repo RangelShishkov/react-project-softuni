@@ -4,7 +4,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import styles from './Navbar.module.css';
 import FireplaceIcon from '@mui/icons-material/Fireplace';
 import { useContext } from 'react';
-import AuthContext from '../contexts/authContext';
+import AuthContext from '../../contexts/authContext';
 
 
 
