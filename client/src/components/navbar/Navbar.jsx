@@ -24,9 +24,7 @@ export const Navbar = () => {
                     <Link to='/' className={styles['custom-link']}>Campfire</Link>
                 </Typography>
                 <Stack direction='row' spacing={2} >
-
                     <Link to='/' className={styles['custom-link']}><Button color='inherit'>All posts</Button></Link>
-
                     {isAuthenticated && (
                         <>
                             <Link to='/post-create' className={styles['custom-link']}><Button color='inherit'>Create post</Button></Link>
