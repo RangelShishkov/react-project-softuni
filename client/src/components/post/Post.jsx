@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import { CardActionArea } from '@mui/material';
 import styles from './Post.module.css'
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ export default function Post({
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="155"
           image={imageUrl}
         />
         <CardContent>
@@ -32,11 +32,6 @@ export default function Post({
         </CardContent>
       </CardActionArea>
       </Link>
-      <CardActions>
-        <Button size="small" color="primary">
-          Comments
-        </Button>
-      </CardActions>
     </Card>
   );
 }

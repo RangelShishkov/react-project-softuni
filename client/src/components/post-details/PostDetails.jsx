@@ -5,6 +5,8 @@ import { Card, CardContent, CardMedia, Typography, Button, CardActions } from '@
 import AuthContext from "../../contexts/authContext";
 import { pathToUrl } from '../../utils/pathUtils';
 import Comments from '../comments/Comments';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const PostDetails = () => {
   const navigate = useNavigate();
@@ -29,33 +31,39 @@ const PostDetails = () => {
 
   return (
     <>
-    <Card sx={{ maxWidth: 900, margin: 'auto', paddingBottom: '30px' }}>
-      <CardMedia
-        sx={{ height: 320 }}
-        image={post.imageUrl}
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h4" component="div">
-          {post.title}
-        </Typography>
-        <Typography variant="body" color="black">
-          {post.description}
-        </Typography>
-      </CardContent>
+      <Card sx={{ maxWidth: 900, margin: 'auto', paddingBottom: '30px' }}>
+        {post.imageUrl ? (
+          <CardMedia
+            sx={{ height: 320 }}
+            image={post.imageUrl}
+          />
+        ) : (
+          <Box sx={{ display: 'flex' }}>
+            <CircularProgress />
+          </Box>
+        )}
+        <CardContent>
+          <Typography gutterBottom variant="h4" component="div">
+            {post.title}
+          </Typography>
+          <Typography variant="body" color="black">
+            {post.description}
+          </Typography>
+        </CardContent>
 
-      {userId === post._ownerId && (
-        <CardActions>
-         <Link to={pathToUrl('/posts/:postId/edit', {postId})}>
-         <Button size="small">Edit</Button>
-         </Link> 
-          <Button onClick={deleteButtonClickHandler} size="small">Delete</Button>
-        </CardActions>
-      )}
-       <Comments />
-    </Card>
+        {userId === post._ownerId && (
+          <CardActions>
+            <Link to={pathToUrl('/posts/:postId/edit', { postId })}>
+              <Button size="small">Edit</Button>
+            </Link>
+            <Button onClick={deleteButtonClickHandler} size="small">Delete</Button>
+          </CardActions>
+        )}
+        <Comments />
+      </Card>
     </>
-    
-   
+
+
   );
 };
 

@@ -11,7 +11,7 @@ import AuthContext from '../../contexts/authContext';
 export const Navbar = () => {
     const {
         isAuthenticated,
-        firstName,
+        email,
     } = useContext(AuthContext);
     return (
         <AppBar position='static'>
@@ -29,7 +29,7 @@ export const Navbar = () => {
                         <>
                             <Link to='/post-create' className={styles['custom-link']}><Button color='inherit'>Create post</Button></Link>
                             <Link to='/my-posts' className={styles['custom-link']}><Button color='inherit'>My posts</Button></Link>
-                            <Link to='/logout' className={styles['custom-link']}><Button color='inherit'>Logout</Button></Link>
+                            <Link to='/logout' className={styles['custom-link']}><Button color='inherit'>Logout, {email}</Button></Link>
                         </>
                     )}
                     {!isAuthenticated && (
