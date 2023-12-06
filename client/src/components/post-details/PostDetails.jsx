@@ -17,6 +17,7 @@ const PostDetails = () => {
       .then(setPost);
   }, [postId]);
 
+
   const deleteButtonClickHandler = async () => {
     const hasConfirmed = confirm(`Are you sure you want to delete ${post.title}`);
 
@@ -50,7 +51,7 @@ const PostDetails = () => {
           <Button onClick={deleteButtonClickHandler} size="small">Delete</Button>
         </CardActions>
       )}
-       <Comments postId={postId} />
+       <Comments />
     </Card>
     </>
     

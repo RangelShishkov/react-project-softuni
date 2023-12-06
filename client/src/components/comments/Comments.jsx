@@ -1,55 +1,98 @@
 import React from "react";
 import { Grid, Paper, Button, TextField } from "@mui/material";
 
+import { useContext, useEffect, useReducer } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import * as commentService from '../../services/commentService';
+import AuthContext from "../../contexts/authContext";
+import reducer from './commentReducer';
+import useForm from '../../hooks/useForm';
+
 export default function Comments() {
+  const { email, userId } = useContext(AuthContext);
+  const [comments, dispatch] = useReducer(reducer, []);
+  const { postId } = useParams();
+
+  useEffect(() => {
+    commentService.getAll(postId)
+      .then((result) => {
+        dispatch({
+          type: 'GET_ALL_COMMENTS',
+          payload: result,
+        });
+      });
+  }, [postId]);
+
+  const addCommentHandler = async (values) => {
+    console.log('Form values:', values);
+    const newComment = await commentService.create(
+      postId,
+      values.comment
+    );
+
+    newComment.owner = { email };
+
+    dispatch({
+      type: 'ADD_COMMENT',
+      payload: newComment
+    });
+  }
+
+  const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+    comment: '',
+  });
+
   return (
-    <div style={{ padding: 14 }} >
- <div style={{ marginBottom: '10px' }}>
+    <div style={{ padding: 14 }}>
+      <div style={{ marginBottom: '10px' }}>
         <h3>Comments</h3>
       </div>
-      <form style={{ marginBottom: '10px' }}>
+
+      {comments.length === 0 && (
+        <p>Be the first to comment</p>
+      )}
+
+      <form style={{ marginBottom: '10px' }} onSubmit={onSubmit}>
         <TextField
+         name="comment"
           style={{ width: '100%' }}
           label="Type your comment"
           variant="outlined"
-          multiline 
-          rowsMax={8}
-          autoComplete="off" // Disable browser autocomplete
-          autoFocus // Automatically focus on the input
-          // value={newComment}
-          
+          multiline
+          maxRows={8}
+          autoComplete="off"
+          autoFocus
+          value={values.comment}
+          onChange={onChange}
+          id="comment"
         />
+        <div style={{ marginBottom: '10px' }}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            type="submit"
+          >
+            Add Comment
+          </Button>
+        </div>
       </form>
-      <div style={{ marginBottom: '10px' }}>
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          // onClick={handleAddComment}
-        >
-          Add Comment
-        </Button>
-      </div>
-      <Paper style={{ padding: "10px 15px", margin: 5 }}>
-        <Grid container wrap="nowrap" spacing={2}>
-          <Grid item>
+
+      {comments.map(({ _id, text, owner: { email } }) => (
+        <Paper key={_id} style={{ padding: "10px 15px", margin: '5px 0' }}>
+          <Grid container wrap="nowrap" spacing={2}>
+            <Grid item>
+            </Grid>
+            <Grid justifyContent="left" item xs zeroMinWidth>
+              <h4 style={{ margin: 0, textAlign: "left" }}>{email}</h4>
+              <p style={{ textAlign: "left" }}>
+                {text}
+              </p>
+            </Grid>
           </Grid>
-          <Grid justifyContent="left" item xs zeroMinWidth>
-            <h4 style={{ margin: 0, textAlign: "left" }}>Michel Michel</h4>
-            <p style={{ textAlign: "left" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-              luctus ut est sed faucibus. Duis bibendum ac ex vehicula laoreet.
-              Suspendisse congue vulputate lobortis. Pellentesque at interdum
-              tortor. Quisque arcu quam, malesuada vel mauris et, posuere
-              sagittis ipsum. Aliquam ultricies a ligula nec faucibus. In elit
-              metus, efficitur lobortis nisi quis, molestie porttitor metus.
-              Pellentesque et neque risus. Aliquam vulputate, mauris vitae
-              tincidunt interdum, mauris mi vehicula urna, nec feugiat quam
-              lectus vitae ex.
-            </p>
-          </Grid>
-        </Grid>    
-      </Paper> 
+        </Paper>
+      ))}
     </div>
   );
 }
