@@ -53,31 +53,34 @@ export default function Comments() {
         <p>Be the first to comment</p>
       )}
 
-      <form style={{ marginBottom: '10px' }} onSubmit={onSubmit}>
-        <TextField
-         name="comment"
-          style={{ width: '100%' }}
-          label="Type your comment"
-          variant="outlined"
-          multiline
-          maxRows={8}
-          autoComplete="off"
-          autoFocus
-          value={values.comment}
-          onChange={onChange}
-          id="comment"
-        />
-        <div style={{ marginBottom: '10px' }}>
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            type="submit"
-          >
-            Add Comment
-          </Button>
-        </div>
-      </form>
+{userId && (  // Only render this block if a user is logged in
+        <form style={{ marginBottom: '10px' }} onSubmit={onSubmit}>
+          <TextField
+            name="comment"
+            style={{ width: '100%' }}
+            label="Type your comment"
+            variant="outlined"
+            multiline
+            maxRows={8}
+            autoComplete="off"
+            autoFocus
+            value={values.comment}
+            onChange={onChange}
+            id="comment"
+          />
+          <div style={{ marginBottom: '10px' }}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              type="submit"
+            >
+              Add Comment
+            </Button>
+          </div>
+        </form>
+      )}
+
 
       {comments.map(({ _id, text, owner: { email } }) => (
         <Paper key={_id} style={{ padding: "10px 15px", margin: '5px 0' }}>
