@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 
 import * as postService from '../../services/postService';
 import Post from "../post/Post";
@@ -10,7 +9,6 @@ import AuthContext from "../../contexts/authContext";
 
 export default function MyPost() {
     const [posts, setPosts] = useState([]);
-    const { postId } = useParams();
     const { userId } = useContext(AuthContext);
 
 

@@ -4,6 +4,7 @@ import * as postService from '../../services/postService';
 import { Card, CardContent, CardMedia, Typography, Button, CardActions } from '@mui/material';
 import AuthContext from "../../contexts/authContext";
 import { pathToUrl } from '../../utils/pathUtils';
+import Comments from '../comments/Comments';
 
 const PostDetails = () => {
   const navigate = useNavigate();
@@ -24,10 +25,9 @@ const PostDetails = () => {
       navigate('/');
     }
   }
-  // console.log('userId:', userId);
-  // console.log('post._ownerId:', post._ownerId);
 
   return (
+    <>
     <Card sx={{ maxWidth: 900, margin: 'auto', paddingBottom: '30px' }}>
       <CardMedia
         sx={{ height: 320 }}
@@ -50,7 +50,11 @@ const PostDetails = () => {
           <Button onClick={deleteButtonClickHandler} size="small">Delete</Button>
         </CardActions>
       )}
+       <Comments postId={postId} />
     </Card>
+    </>
+    
+   
   );
 };
 
