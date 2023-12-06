@@ -1,13 +1,35 @@
 import React from "react";
-import { Grid, Paper, Button } from "@mui/material";
+import { Grid, Paper, Button, TextField } from "@mui/material";
 
 export default function Comments() {
   return (
     <div style={{ padding: 14 }} >
-      <h3 style={{display: 'inline-block'}}>Comments</h3>
-      <Button style={{ marginLeft: '10px' }} variant="contained" color="primary" size="small">
-        Add Comment
-      </Button>
+ <div style={{ marginBottom: '10px' }}>
+        <h3>Comments</h3>
+      </div>
+      <form style={{ marginBottom: '10px' }}>
+        <TextField
+          style={{ width: '100%' }}
+          label="Type your comment"
+          variant="outlined"
+          multiline 
+          rowsMax={8}
+          autoComplete="off" // Disable browser autocomplete
+          autoFocus // Automatically focus on the input
+          // value={newComment}
+          
+        />
+      </form>
+      <div style={{ marginBottom: '10px' }}>
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          // onClick={handleAddComment}
+        >
+          Add Comment
+        </Button>
+      </div>
       <Paper style={{ padding: "10px 15px", margin: 5 }}>
         <Grid container wrap="nowrap" spacing={2}>
           <Grid item>
