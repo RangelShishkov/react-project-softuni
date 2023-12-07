@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useForm from '../../hooks/useForm';
 import AuthContext from '../../contexts/authContext';
 
@@ -25,12 +25,21 @@ const RegisterFormKeys = {
 
 export default function SignUp() {
   const { registerSubmitHandler } = useContext(AuthContext);
-  const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
+  const [errorMessage, setErrorMessage] = useState(''); 
+
+  const { values, onChange, onSubmit } = useForm(
+    (values) => registerSubmitHandler(values, setErrorMessage),
+    {
     [RegisterFormKeys.FirstName]: '',
     [RegisterFormKeys.LastName]: '',
     [RegisterFormKeys.Email]: '',
-    [RegisterFormKeys.Password]: '',
-  });
+    [RegisterFormKeys.Password]: ''
+    }
+  );
+    
+ 
+  
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
@@ -105,6 +114,11 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
+            {errorMessage && (
+              <Typography variant="body2" color="error" align="center">
+                {errorMessage}
+              </Typography>
+            )}
             <Button
               type="submit"
               fullWidth

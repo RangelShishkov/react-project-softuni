@@ -14,20 +14,20 @@ import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
 
 const defaultTheme = createTheme();
-const LoginFormKyes = {
+const LoginFormKeys = {
   Email: 'email',
   Password: 'password',
 };
 
 export default function Login() {
   const { loginSubmitHandler } = useContext(AuthContext);
-  const [errorMessage, setErrorMessage] = useState(''); 
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { values, onChange, onSubmit } = useForm(
     (values) => loginSubmitHandler(values, setErrorMessage),
     {
-      [LoginFormKyes.Email]: '',
-      [LoginFormKyes.Password]: '',
+      [LoginFormKeys.Email]: '',
+      [LoginFormKeys.Password]: '',
     }
   );
 
@@ -61,7 +61,7 @@ export default function Login() {
               autoComplete="email"
               autoFocus
               onChange={onChange}
-              value={values[LoginFormKyes.Email]}
+              value={values[LoginFormKeys.Email]}
 
             />
             <TextField
@@ -74,14 +74,15 @@ export default function Login() {
               id="password"
               autoComplete="current-password"
               onChange={onChange}
-              value={values[LoginFormKyes.Password]}
+              value={values[LoginFormKeys.Password]}
 
             />
             {errorMessage && (
-  <Typography variant="body2" color="error" align="center">
-    {errorMessage}
-  </Typography>
-)}
+              <Typography variant="body2" color="error" align="center">
+                {errorMessage}
+              </Typography>
+            )}
+            
             <Button
               type="submit"
               fullWidth
