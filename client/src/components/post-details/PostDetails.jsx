@@ -44,7 +44,7 @@ const PostDetails = () => {
           <Typography gutterBottom variant="h4" component="div">
             {post.title}
           </Typography>
-          <Typography variant="body" color="black">
+          <Typography variant="body" color="black" style={{ whiteSpace: 'pre-wrap' }}>
             {post.description}
           </Typography>
         </CardContent>
