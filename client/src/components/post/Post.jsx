@@ -13,8 +13,7 @@ export default function Post({
   imageUrl,
   description
 }) {
-  // Define a minimum height for the card content
-  const cardContentMinHeight = '330px'; 
+  const descriptionClass = imageUrl ? styles.shortDescription : styles.longDescription;
 
   return (
     <Link to={`/posts/${_id}`} className={styles['custom-link']} style={{ textDecoration: 'none' }}>
@@ -28,11 +27,11 @@ export default function Post({
               alt={title}
             />
           )}
-          <CardContent sx={{ minHeight: imageUrl ? 'auto' : cardContentMinHeight }}>
+          <CardContent sx={{ minHeight: imageUrl ? 'auto' : '330px' }}>
             <Typography gutterBottom variant="h5" component="div">
               {title}
             </Typography>
-            <Typography variant="body2" color="text.secondary" className={styles['truncatedText']}>
+            <Typography variant="body2" color="text.secondary" className={descriptionClass}>
               {description}
             </Typography>
           </CardContent>

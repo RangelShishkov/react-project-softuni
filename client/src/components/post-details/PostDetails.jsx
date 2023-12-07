@@ -38,9 +38,7 @@ const PostDetails = () => {
             image={post.imageUrl}
           />
         ) : (
-          <Box sx={{ display: 'flex' }}>
-            <CircularProgress />
-          </Box>
+          <></>
         )}
         <CardContent>
           <Typography gutterBottom variant="h4" component="div">
