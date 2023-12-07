@@ -60,9 +60,6 @@ const PostDetails = () => {
         <Comments />
       </Card>
     </>
-
-
   );
 };
-
 export default PostDetails;

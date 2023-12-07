@@ -9,7 +9,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
 
@@ -21,10 +21,16 @@ const LoginFormKyes = {
 
 export default function Login() {
   const { loginSubmitHandler } = useContext(AuthContext);
-  const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
-    [LoginFormKyes.Email]: '',
-    [LoginFormKyes.Password]: '',
-  })
+  const [errorMessage, setErrorMessage] = useState(''); 
+
+  const { values, onChange, onSubmit } = useForm(
+    (values) => loginSubmitHandler(values, setErrorMessage),
+    {
+      [LoginFormKyes.Email]: '',
+      [LoginFormKyes.Password]: '',
+    }
+  );
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -71,6 +77,11 @@ export default function Login() {
               value={values[LoginFormKyes.Password]}
 
             />
+            {errorMessage && (
+  <Typography variant="body2" color="error" align="center">
+    {errorMessage}
+  </Typography>
+)}
             <Button
               type="submit"
               fullWidth

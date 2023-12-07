@@ -17,7 +17,7 @@ export default function Logout() {
             })
             .catch(() => {
                 logoutHandler();
-                navigate('/')
+                navigate('/login')
             });
     }, []);
 
