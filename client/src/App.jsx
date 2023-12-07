@@ -10,6 +10,7 @@ import Logout from './components/logout/logout'
 import { AuthProvider } from './contexts/authContext'
 import PostDetails from './components/post-details/PostDetails'
 import PostEdit from './components/post-edit/PostEdit'
+import AuthGuard from './components/guards/AuthGuard'
 
 
 
@@ -19,18 +20,22 @@ function App() {
     <>
       <AuthProvider>
         <Navbar />
-        <main>
+        <div>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/my-posts' element={<MyPosts />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/post-create' element={<PostCreate />} />
-            <Route path='/logout' element={<Logout />} />
             <Route path='/posts/:postId' element={<PostDetails />} />
-            <Route path='/posts/:postId/edit' element={<PostEdit />} />
+
+            <Route element={<AuthGuard />}>
+              <Route path='/post-create' element={<PostCreate />} />
+              <Route path='/posts/:postId/edit' element={<PostEdit />} />
+              <Route path='/logout' element={<Logout />} />
+            </Route>
+            
           </Routes>
-        </main>
+        </div>
         <Footer />
       </AuthProvider>
     </>
