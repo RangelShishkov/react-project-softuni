@@ -3,7 +3,7 @@ import Home from './components/home/Home'
 import MyPosts from './components/myPosts/MyPosts'
 import { Routes, Route } from 'react-router-dom'
 import Footer from './components/footer/Footer'
-import Login from './components/login/login'
+import Login from './components/login/Login'
 import Register from './components/register/Register'
 import PostCreate from './components/post-create/PostCreate'
 import Logout from './components/logout/logout'
@@ -11,7 +11,7 @@ import { AuthProvider } from './contexts/authContext'
 import PostDetails from './components/post-details/PostDetails'
 import PostEdit from './components/post-edit/PostEdit'
 import AuthGuard from './components/guards/AuthGuard'
-
+import NotFound from './components/notFound/NotFound'
 
 
 function App() {
@@ -34,6 +34,8 @@ function App() {
               <Route path='/logout' element={<Logout />} />
             </Route>
             
+            <Route path='*' element={<NotFound />} />
+
           </Routes>
         </div>
         <Footer />

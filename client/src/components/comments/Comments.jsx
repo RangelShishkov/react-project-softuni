@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Paper, Button, TextField } from "@mui/material";
 
 import { useContext, useEffect, useReducer } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/authContext";
@@ -37,9 +37,11 @@ export default function Comments() {
       type: 'ADD_COMMENT',
       payload: newComment
     });
+
+    reset();
   }
 
-  const { values, onChange, onSubmit } = useForm(addCommentHandler, {
+  const { values, onChange, onSubmit, reset } = useForm(addCommentHandler, {
     comment: '',
   });
 

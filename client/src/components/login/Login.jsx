@@ -13,8 +13,6 @@ import { useContext } from "react";
 import useForm from "../../hooks/useForm";
 import AuthContext from "../../contexts/authContext";
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme();
 const LoginFormKyes = {
   Email: 'email',
