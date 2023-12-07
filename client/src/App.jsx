@@ -23,12 +23,12 @@ function App() {
         <div>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/my-posts' element={<MyPosts />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/posts/:postId' element={<PostDetails />} />
 
             <Route element={<AuthGuard />}>
+            <Route path='/my-posts' element={<MyPosts />} />
               <Route path='/post-create' element={<PostCreate />} />
               <Route path='/posts/:postId/edit' element={<PostEdit />} />
               <Route path='/logout' element={<Logout />} />

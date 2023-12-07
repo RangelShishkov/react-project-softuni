@@ -22,7 +22,7 @@ export default function Post({
           {imageUrl && (
             <CardMedia
               component="img"
-              height="155"
+              height="185"
               image={imageUrl}
               alt={title}
             />
