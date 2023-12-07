@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import styles from './Post.module.css'
+import styles from './Post.module.css';
 import { Link } from 'react-router-dom';
 
 export default function Post({
@@ -13,25 +13,31 @@ export default function Post({
   imageUrl,
   description
 }) {
+  // Define a minimum height for the card content
+  const cardContentMinHeight = '330px'; 
+
   return (
-    <Card sx={{ maxWidth: 350, minWidth: 350, margin: 1, display: 'inline-block'}}>
-      <Link to= {`/posts/${_id}`} className={styles['custom-link']} >
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="155"
-          image={imageUrl}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary" className={styles['truncatedText']}>
-            {description}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      </Link>
-    </Card>
+    <Link to={`/posts/${_id}`} className={styles['custom-link']} style={{ textDecoration: 'none' }}>
+      <Card sx={{ maxWidth: 350, minWidth: 350, margin: 1, display: 'inline-block' }}>
+        <CardActionArea sx={{ width: '100%' }}>
+          {imageUrl && (
+            <CardMedia
+              component="img"
+              height="155"
+              image={imageUrl}
+              alt={title}
+            />
+          )}
+          <CardContent sx={{ minHeight: imageUrl ? 'auto' : cardContentMinHeight }}>
+            <Typography gutterBottom variant="h5" component="div">
+              {title}
+            </Typography>
+            <Typography variant="body2" color="text.secondary" className={styles['truncatedText']}>
+              {description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Link>
   );
 }
