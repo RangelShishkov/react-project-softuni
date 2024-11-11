@@ -10,7 +10,7 @@ The project is a simple blog application where users can read and publish blog p
 
 Before you begin, ensure you have the following installed:
 
-- Node.js and npm
+- Node.js
 
 ## Getting Started
 
